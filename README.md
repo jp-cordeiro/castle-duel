@@ -1,8 +1,8 @@
-#Jogo desenvolvido como exercício do livro "Vue.js 2 Web Development Projects"
+# Jogo desenvolvido como exercício do livro "Vue.js 2 Web Development Projects"
 
-#Link:
+# Link:
 
-#Regras do jogo:
+# Regras do jogo:
 * Dois jogadores jogam, um por turno;
 * Cada jogador começa o jogo com 10 de saúde, 10 de comida e uma mão de 5 cartas;
 * Os jogadores não podem ter mais de 10 de saúde e 10 de comida;
