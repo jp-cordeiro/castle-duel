@@ -8,5 +8,16 @@ var currentPlayingCard = null
 //Estado da aplicação
 var state = {
     //Mundo
-    worldRatio: getWorlRatio()
+    worldRatio: getWorlRatio(),
+    //Jogo
+    turn: 1,
+    players: [
+        {
+            name: 'Jogador 1'
+        },
+        {
+            name: 'Jogador 2'
+        }
+    ],
+    currentPlayerIndex: Math.round(Math.random())
 }
