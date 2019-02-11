@@ -14,5 +14,5 @@ que é então colocada na pilha de descarte;
 para o seu primeiro turno);
 * Se a pilha de compra estiver vazia quando o jogador comprar uma carta, a pilha de compra será recarregada
 com a pilha de descarte;
-* Cartas podem modificar a saúde e a suprimentos do jogador ou seu oponente;
+* Cartas podem modificar a saúde e a suprimentos do jogador ou do seu oponente;
 * Algumas cartas também podem fazer um jogador pular a vez.
