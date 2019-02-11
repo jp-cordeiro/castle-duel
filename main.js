@@ -6,19 +6,15 @@ new Vue({
     template: `
     <div id="#app">
         <top-bar :turn="turn" :current-player-index="currentPlayerIndex" :players="players"/>
-        <hand :cards="testHand"/>
+        <transition name="hand">
+            <hand v-if="!activeOverlay" :cards="testHand" @card-play="testPlayCard"/>
+        </transition>     
      </div>
     `,
-    computed:{
-        testCard(){
-            return cards.archers
-        },
-
-    },
     methods:{
         createTestHand(){
             const cards = []
-            const inds = Object.keys(cards)
+            const ids = Object.keys(cards)
 
             for(let i =0; i < 5; i++){
                 cards.push(this.testDrawCard())
@@ -35,6 +31,10 @@ new Vue({
                 id: randomId,
                 def: cards[randomId]
             }
+        },
+        testPlayCard(card){
+            const index = this.testHand.indexOf(card)
+            this.testHand.splice(index,1)
         }
     },
     created(){

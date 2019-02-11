@@ -7,6 +7,8 @@ var currentPlayingCard = null
 
 //Estado da aplicação
 var state = {
+    //UI
+    activeOverlay: null,
     //Mundo
     worldRatio: getWorlRatio(),
     //Jogo
@@ -19,6 +21,5 @@ var state = {
             name: 'Jogador 2'
         }
     ],
-    currentPlayerIndex: Math.round(Math.random()),
-    testHand: []
+    currentPlayerIndex: Math.round(Math.random())
 }

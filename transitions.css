@@ -1,0 +1,41 @@
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/*Mão*/
+
+.hand-enter-active,
+.hand-leave-active {
+    transition: opacity .5s;
+}
+
+.hand-enter,
+.hand-leave-to {
+    opacity: 0;
+}
+
+.hand-enter-active .wrapper,
+.hand-leave-active .wrapper {
+    transition: transform .8s cubic-bezier(.08,.74,.34,1);
+    transform-origin: bottom center;
+}
+
+.hand-enter .wrapper,
+.hand-leave-to .wrapper {
+    transform: rotateX(90deg);
+}
+
+.hand-enter-active .card,
+.hand-leave-active .card {
+    transition: margin .8s cubic-bezier(.08,.74,.34,1);
+}
+
+.hand-enter .card,
+.hand-leave-to .card {
+    margin: 0 -100px;
+}
