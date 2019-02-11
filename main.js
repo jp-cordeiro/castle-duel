@@ -9,11 +9,14 @@ new Vue({
         <transition name="hand">
             <hand v-if="!activeOverlay" :cards="testHand" @card-play="testPlayCard"/>
         </transition>
-        <overlay v-if="activeOverlay">
         <transition name="zoom">
-            <component :is="'overlay-content-' + activeOverlay" :player="currentPlayer" :opponent="currentOpponent" :players="players"/>
-        </transition>                    
-        </overlay>    
+            <overlay v-if="activeOverlay" :key="activeOverlay">           
+                <component :is="'overlay-content-' + activeOverlay" :player="currentPlayer" :opponent="currentOpponent" :players="players"/>          
+            </overlay>   
+        </transition>
+        <transition name="fade">
+            <div class="overlay-background" v-if="activeOverlay"/>
+        </transition>
      </div>
     `,
     methods:{
