@@ -101,7 +101,7 @@ let cards = [
     {
         id: 'poison',
         type: 'special',
-        title: 'Veneno',
+        title: 'Enxame de gafanhotos',
         description: 'Gaste 1 de <b>Comida</b><br>Seu oponente perde 3 de <b>Comida</b>',
         note: 'Encantador de gafanhotos, dê o seu melhor agora!',
         play (player, opponent) {

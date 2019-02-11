@@ -6,6 +6,13 @@ new Vue({
     template: `
     <div id="#app">
         <top-bar :turn="turn" :current-player-index="currentPlayerIndex" :players="players"/>
+        <div class="world">
+            <div class="clouds">
+                <cloud v-for="index in 10" :type="(index - 1) % 5 + 1" />
+            </div>
+                <castle v-for="(player,index) in players" :player="player" :index="index" :key="player.name"/>
+                <div class="land"/>
+        </div>
         <transition name="hand">
             <hand v-if="!activeOverlay" :cards="testHand" @card-play="testPlayCard"/>
         </transition>
@@ -49,6 +56,14 @@ new Vue({
         this.testHand = this.createTestHand()
     }
 })
+
+//Tween.js
+requestAnimationFrame(animate)
+
+function animate(time){
+    requestAnimationFrame(animate)
+    TWEEN.update(time)
+}
 
 window.addEventListener('resize', () => {
     state.worldRatio = getWorlRatio()
