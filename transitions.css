@@ -39,3 +39,47 @@
 .hand-leave-to .card {
     margin: 0 -100px;
 }
+
+/*Cartas*/
+
+.card{
+    transition: all .3s;
+}
+
+.card-move{
+    transition: transform .3s;
+}
+
+.card-enter{
+    opacity: 0;
+    /*Desliza para a direita*/
+    transform: scale(.8) translateX(100px);
+}
+
+.card-leave-active{
+    /*Momentos diferentes para saída da transição*/
+    transition: all 1s, opacity .5s .5s;
+    /*Manter sempre na posição horizontal*/
+    position: absolute !important;
+    z-index: 10;
+    pointer-events: none;
+}
+
+card-leave-to{
+    opacity: 0;
+    /*Zoom da carta ao subir*/
+    transform: translateX(-106px) translateY(-300px) scale(1.5);
+}
+
+/*Zoom*/
+
+.zoom-enter-active,
+.zoom-leave-active{
+    transition: opacity .3s, transform .3s;
+}
+
+.zoom-enter,
+.zoom-leave-to{
+    opacity: 0;
+    transform: scale(.7);
+}

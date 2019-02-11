@@ -8,7 +8,12 @@ new Vue({
         <top-bar :turn="turn" :current-player-index="currentPlayerIndex" :players="players"/>
         <transition name="hand">
             <hand v-if="!activeOverlay" :cards="testHand" @card-play="testPlayCard"/>
-        </transition>     
+        </transition>
+        <overlay v-if="activeOverlay">
+        <transition name="zoom">
+            <component :is="'overlay-content-' + activeOverlay" :player="currentPlayer" :opponent="currentOpponent" :players="players"/>
+        </transition>                    
+        </overlay>    
      </div>
     `,
     methods:{
