@@ -4,7 +4,7 @@
 
 # Regras do jogo:
 * Dois jogadores jogam, um por turno;
-* Cada jogador começa o jogo com 10 de saúde, 10 de comida e uma mão de 5 cartas;
+* Cada jogador começa o jogo com 10 de saúde, 10 de suprimento e uma mão de 5 cartas;
 * Os jogadores não podem ter mais de 10 de saúde e 10 de comida;
 * Um jogador perde quando sua comida ou saúde chega a zero;
 * Ambos os jogadores podem perder em um empate;
