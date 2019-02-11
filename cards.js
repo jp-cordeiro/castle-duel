@@ -49,7 +49,7 @@ let cards = [
         type: 'attack',
         title: 'Cavalaria',
         description: 'Gaste 7 de <b>Comida</b><br>Inflija 5 de<b>Dano</b>',
-        note: 'A armada suprema do meu reino te subjulgará!!!!',
+        note: 'A armada suprema do meu reino te subjugará!!!!',
         play (player, opponent) {
             player.food -= 7
             opponent.health -= 5
@@ -158,3 +158,30 @@ let cards = [
         },
     },
 ]
+
+cards = cards.reduce((map,card) => {
+    card.description = card.description.replace(/\d+\s+<b>.*?<\/b>/gi, '<span class="effect">$&</span>')
+    card.description = card.description.replace(/<b>(.*?)<\/b>/gi, (match, pl) => {
+        const id = (pl === 'Dano' ? 'Damage' : 'Food').toLowerCase()
+        return `<b class="keyword ${id}">${pl} <img src="svg/${id}.svg"></b>`
+    })
+    map[card.id] = card
+    return map
+}, {})
+
+let pile = {
+    pikemen: 4,
+    catapult: 4,
+    trebuchet: 3,
+    archers: 3,
+    knighthood: 3,
+    'quick-repair': 4,
+    granary: 4,
+    repair: 3,
+    farm: 3,
+    poison: 2,
+    fireball: 2,
+    chapel: 2,
+    curse: 1,
+    miracle: 1,
+}

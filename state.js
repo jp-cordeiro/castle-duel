@@ -19,5 +19,6 @@ var state = {
             name: 'Jogador 2'
         }
     ],
-    currentPlayerIndex: Math.round(Math.random())
+    currentPlayerIndex: Math.round(Math.random()),
+    testHand: []
 }

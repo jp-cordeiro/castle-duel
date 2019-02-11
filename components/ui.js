@@ -9,8 +9,40 @@ Vue.component('top-bar',{
     </div>
     <div class="player p1">{{ players[1].name}}</div>
     </div>
-`,
-    created(){
-        console.log(this.players)
+`
+})
+
+Vue.component('card',{
+    props: ['def'],
+    template: `
+<div class="card" :class="'type-' + def.type" @click="play">
+    <div>
+         <div class="title">{{ def.title }}</div>
+         <img class="separator" src="svg/card-separator.svg" alt="">
+         <div class="description">
+            <div v-html="def.description"></div>
+         </div>
+         <div class="note">
+            <div v-html="def.note"></div>
+         </div>
+    </div>
+</div>
+    `,
+    methods:{
+        play(){
+            this.$emit('play')
+        }
     }
+})
+
+Vue.component('hand',{
+    props:['cards'],
+    template:`
+<div class="hand">
+    <div class="wrapper">
+        <!--Cartas-->
+        <card v-for="card in cards" :def="card.def"/>
+    </div>
+</div>
+    `
 })
