@@ -25,7 +25,7 @@ let cards = [
         id: 'trebuchet',
         type: 'attack',
         title: 'Trabuco',
-        description: 'Gaste 3 de <b>Suprimentos</b> <br> Leve 1 de <b>Danod</b> <br> Inflija 4 de <b>Dano</b>',
+        description: 'Gaste 3 de <b>Suprimentos</b> <br> Leve 1 de <b>Dano</b> <br> Inflija 4 de <b>Dano</b>',
         note: 'A arma suprema de destruição!',
         play (player, opponent){
             player.food -= 3
