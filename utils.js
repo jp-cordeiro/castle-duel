@@ -71,7 +71,7 @@ function getDrawPileCount() {
 function applyCardEffect(card) {
     state.currentPlayer.lastPlayedCardId = card.id
     card.def.play(state.currentPlayer, state.currentOpponent)
-    //Verifica se as estatísticas de comida e saúde estão dentro dos limites
+    //Verifica se as estatísticas de suprimentos e saúde estão dentro dos limites
     state.players.forEach(checkStatsBounds)
 }
 
@@ -91,7 +91,7 @@ function checkStatsBounds(player) {
         player.health = maxHealth
     }
 
-    //Comida
+    //Suprimentos
     if(player.food < 0){
         player.food = 0
     } else if(player.food > maxFood){

@@ -18,7 +18,7 @@ Vue.component('castle-banners', {
     props: ['player'],
     template: `
     <div class="banners">
-        <!--Comida-->
+        <!--Suprimentos-->
         <img class="food-icon" src="svg/food-icon.svg"/>
         <bubble type="food" :value="player.food" :ratio="foodRatio" />
         <banner-bar class="food-bar" color="#288339" :ratio="foodRatio" />
