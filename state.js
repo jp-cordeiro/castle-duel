@@ -40,9 +40,15 @@ var state = {
         return state.players[state.currentPlayerIndex]
     },
     get currentOpponentId(){
-        return state.players[state.currentPlayerIndex === 0 ? 1 : 0]
+        return state.currentPlayerIndex === 0 ? 1 : 0
     },
     get currentOpponent(){
         return state.players[state.currentOpponentId]
-    }
+    },
+    get currentHand(){
+        return state.currentPlayer.hand
+    },
+    drawPile: pile,
+    discardPile: {},
+    canPlay: false
 }

@@ -1,10 +1,24 @@
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 1s;
+    transition: opacity .5s;
 }
+
 .fade-enter,
 .fade-leave-to {
     opacity: 0;
+}
+
+/*Zoom*/
+
+.zoom-enter-active,
+.zoom-leave-active {
+    transition: opacity .3s, transform .3s;
+}
+
+.zoom-enter,
+.zoom-leave-to {
+    opacity: 0;
+    transform: scale(.7);
 }
 
 /*Mão*/
@@ -65,21 +79,8 @@
     pointer-events: none;
 }
 
-card-leave-to{
+.card-leave-to{
     opacity: 0;
     /*Zoom da carta ao subir*/
     transform: translateX(-106px) translateY(-300px) scale(1.5);
-}
-
-/*Zoom*/
-
-.zoom-enter-active,
-.zoom-leave-active{
-    transition: opacity .3s, transform .3s;
-}
-
-.zoom-enter,
-.zoom-leave-to{
-    opacity: 0;
-    transform: scale(.7);
 }

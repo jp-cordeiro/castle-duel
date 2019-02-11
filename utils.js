@@ -17,6 +17,8 @@ function drawCard() {
 
     const choice = Math.round(Math.random() * (getDrawPileCount() - 1)) + 1
 
+    let accumulation = 0
+
     for (let k in state.drawPile){
         accumulation += state.drawPile[k]
         if(choice <= accumulation){
@@ -24,7 +26,7 @@ function drawCard() {
             state.drawPile[k] --
             return {
                 id: k,
-                uid: cardUid,
+                uid: cardUid++,
                 def: cards[k]
             }
         }
@@ -41,7 +43,12 @@ function drawInitialHand(player) {
 
 //Adicionar carta à pilha
 function addCardToPile(pile, cardId) {
-    typeof pile[card] === 'number' ? pile[cardId] ++ : pile[cardId] = 1
+    if (typeof pile[cardId] === 'number') {
+        pile[cardId] ++
+    } else {
+        pile[cardId] = 1
+    }
+    // typeof pile[card] === 'number' ? pile[cardId] ++ : pile[cardId] = 1
 }
 
 //Repôr a pilha caso esteja zerada

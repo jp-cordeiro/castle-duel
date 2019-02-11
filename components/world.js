@@ -65,24 +65,24 @@ Vue.component('banner-bar',{
         }
     },
     computed: {
-        targetHeigth(){
+        targetHeight(){
             return 220 * this.ratio + 40
         }
     },
     watch:{
-        targetHeigth(newValue,oldValue) {
+        targetHeight (newValue, oldValue) {
             const vm = this
-            new TWEEN.tween({value: oldValue})
+            new TWEEN.Tween({ value: oldValue })
                 .easing(TWEEN.Easing.Cubic.InOut)
-                .to({value: newValue},500)
+                .to({ value: newValue }, 500)
                 .onUpdate(function () {
                     vm.height = this.value.toFixed(0)
                 })
                 .start()
-        }
+        },
     },
     created(){
-        this.height = this.targetHeigth
+        this.height = this.targetHeight
     }
 })
 
@@ -103,36 +103,40 @@ Vue.component('cloud', {
     },
     methods:{
         setPosition(left,top){
-            this.style.transform = `translate(${left}px, ${top}px`
+            this.style.transform = `translate(${left}px, ${top}px)`
         },
         initPosition(){
             const width = this.$el.clientWidth
             this.setPosition(-width, 0)
         },
-        startAnimation(delay = 0){
+        startAnimation (delay = 0) {
             const vm = this
 
+            // Element width
             const width = this.$el.clientWidth
 
-            //Animação randômica
-            const {min,max} = cloudAnimationDurations
+            // Random animation duration
+            const { min, max } = cloudAnimationDurations
             const animationDuration = Math.random() * (max - min) + min
 
+            // Bing faster clouds forward
             this.style.zIndex = Math.round(max - animationDuration)
 
+            // Random position
             const top = Math.random() * (window.innerHeight * 0.3)
 
-            new TWEEN.Tween({value: -width})
-                .to({value:window.innerWidth}, animationDuration)
+            new TWEEN.Tween({ value: -width })
+                .to({ value: window.innerWidth }, animationDuration)
                 .delay(delay)
                 .onUpdate(function () {
                     vm.setPosition(this.value, top)
                 })
                 .onComplete(() => {
-                    this.startAnimation((Math.random() * 10000))
+                    // With a random delay
+                    this.startAnimation(Math.random() * 10000)
                 })
                 .start()
-        }
+        },
     },
     mounted(){
         this.startAnimation(-Math.random() * cloudAnimationDurations.min)

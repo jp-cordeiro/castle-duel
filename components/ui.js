@@ -12,46 +12,39 @@ Vue.component('top-bar',{
 `
 })
 
-Vue.component('card',{
+Vue.component('card', {
+    template: `<div class="card" :class="'type-' + def.type" @click="play">
+    <div class="title">{{ def.title }}</div>
+    <img class="separator" src="svg/card-separator.svg" />
+    <div class="description"><div v-html="def.description"></div></div>
+    <div class="note" v-if="def.note"><div v-html="def.note"></div></div>
+  </div>`,
     props: ['def'],
-    template: `
-<div class="card" :class="'type-' + def.type" @click="play">
-    <div>
-         <div class="title">{{ def.title }}</div>
-         <img class="separator" src="svg/card-separator.svg" alt="">
-         <div class="description">
-            <div v-html="def.description"></div>
-         </div>
-         <div class="note">
-            <div v-html="def.note"></div>
-         </div>
-    </div>
-</div>
-    `,
-    methods:{
-        play(){
+    methods: {
+        play () {
             this.$emit('play')
-        }
-    }
+        },
+    },
 })
 
-Vue.component('hand',{
-    props:['cards'],
-    template:`
-<div class="hand">
+Vue.component('hand', {
+    template: `<div class="hand">
     <div class="wrapper">
-        <!--Cartas-->
-        <transition-group name="card" tag="div" class="cards">
-            <card v-for="card in cards" :def="card.def" :key="card.uid" @play="handlePlay(card)"/>
-        </transition-group>     
+      <transition-group name="card" tag="div" class="cards" @after-leave="handleLeaveTransitionEnd">
+        <card v-for="card of cards" :key="card.uid" :def="card.def" @play="handlePlay(card)" />
+      </transition-group>
     </div>
-</div>
-    `,
+  </div>`,
+    props: ['cards'],
     methods: {
-        handlePlay(card){
-            this.$emit('card-play',card)
-        }
-    }
+        handlePlay (card) {
+            this.$emit('card-play', card)
+        },
+
+        handleLeaveTransitionEnd () {
+            this.$emit('card-leave-end')
+        },
+    },
 })
 
 Vue.component('overlay',{
@@ -84,7 +77,7 @@ Vue.component('overlay-content-last-play',{
     props: ['opponent'],
     template: `
 <div>
-    <div v-if="opponent.slippedTurn">
+    <div v-if="opponent.skippedTurn">
         {{ opponent.name }} pulou o turno!
     </div> 
     <template v-else>
