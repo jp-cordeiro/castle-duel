@@ -1,6 +1,6 @@
 # Jogo desenvolvido como exercício do livro "Vue.js 2 Web Development Projects"
 
-# Link:
+# Link: https://jp-cordeiro.github.io/castle-duel/
 
 # Regras do jogo:
 * Dois jogadores jogam, um por turno;
